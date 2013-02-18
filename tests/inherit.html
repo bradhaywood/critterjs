@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Critter / Tests / Inheritance</title>
+        <script type="text/javascript" src="../lib/critter.js"></script>
+        <script type="text/javascript" src="test.js"></script>
+    </head>
+    <body>
+        <script type="text/javascript">
+            function Animal() {
+                this.action = function() { return "walks"; };
+                this.breathe = function() { return "inhales and exhales"; };
+            }
+            
+            function Cat() {
+                this.action = function() { return "plays"; };
+            }
+            
+            function Bird() {
+                this.action = function() { return "flys"; }
+            }
+
+            Cat.extends('Animal');
+            var cat = new Cat();
+            if (cat.breathe() == 'inhales and exhales')
+                ok("Cat can breathe");
+            else
+                not_ok("Cat is having trouble breathing!");
+
+            if (cat.action() == 'plays')
+                ok("Cat can play");
+            else
+                not_ok("Cat can't play :-(");
+
+            Bird.extends('Animal');
+            var bird = new Bird();
+            
+            if (bird.breathe() == 'inhales and exhales')
+                ok("Bird can breathe");
+            else
+                not_ok("Bird is having trouble breathing!");        
+
+            if (bird.action() == 'flys')
+                ok("Bird can fly");
+            else
+                not_ok("Bird can't fly :-(");
+
+        </script>
+    </body>
+</html>
