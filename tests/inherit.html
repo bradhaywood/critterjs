@@ -22,6 +22,12 @@
 
             Cat.extends('Animal');
             var cat = new Cat();
+
+            if (cat instanceof Animal)
+                ok("Cat is an Animal");
+            else
+                not_ok("Cat isn't an Animal.. how strange");
+
             if (cat.breathe() == 'inhales and exhales')
                 ok("Cat can breathe");
             else
@@ -35,6 +41,11 @@
             Bird.extends('Animal');
             var bird = new Bird();
             
+            if (bird instanceof Animal)
+                ok("Bird is an Animal");
+            else
+                not_ok("Bird isn't an Animal.. how strange");
+
             if (bird.breathe() == 'inhales and exhales')
                 ok("Bird can breathe");
             else
