@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Critter / Tests / Accessors</title>
+        <script type="text/javascript" src="../lib/critter.js"></script>
+        <script type="text/javascript" src="test.js"></script>
+    </head>
+    <body>
+        <script type="text/javascript">
+            function MyClass() {
+            }
+
+            var instance = new MyClass();
+            instance.has('name', { is: 'rw' });
+            instance.has('gender', { is: 'ro', value: 'male' });
+
+            instance.name   = "Foo Bar";
+            instance.gender = "female"; //should fail
+            
+            if (instance.name == "Foo Bar")
+                ok("Name is Foo Bar");
+            else
+                not_ok("Our name isn't Foo Bar");
+
+        
+            if (instance.gender == "male")
+                ok("Our gender did not change");
+            else
+                not_ok("Somehow our gender changed. This isn't a good thing");
+
+        </script>
+    </body>
+</html>
