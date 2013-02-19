@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Critter / Tests / Methods</title>
+        <script type="text/javascript" src="../lib/critter.js"></script>
+        <script type="text/javascript" src="test.js"></script>
+    </head>
+    <body>
+        <script type="text/javascript">
+            function MyClass() {
+            }
+
+            var instance = new MyClass();
+            // applying a method to an instance, will create it on the base function too, if it doesn't exist
+            instance.method('drink_soup', function(type) {
+                return "I drink " + type + " soup!";
+            });
+            
+            if (MyClass.drink_soup("vegetable") == 'I drink vegetable soup!')
+                ok("Base function is drinking vegetable soup");
+            else
+                not_ok("Base function isn't drinking vegetable soup");
+
+            if (instance.drink_soup('Critter') == 'I drink Critter soup!')
+                ok("Instance is drinking vegetable soup");
+            else
+                not_ok("Instance isn't drinking vegetable soup");
+
+        </script>
+    </body>
+</html>
